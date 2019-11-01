@@ -1,3 +1,10 @@
+'''
+@Author: Kingtous
+@Date: 2019-11-01 10:25:05
+@LastEditors: Kingtous
+@LastEditTime: 2019-11-01 10:32:55
+@Description: Kingtous' Code
+'''
 import networkx as nx
 import numpy as np
 import random
@@ -92,7 +99,7 @@ def concat_features(X, features):
 
 def predict(g, params, classifier):
     # Generate positive training and testing edge list
-    EDGES_POSITIVE = g.edges()
+    EDGES_POSITIVE = list(g.edges())
 
     # Generate negative edge list
     EDGES_NEGATIVE = generate_non_edge_list(g)
@@ -124,13 +131,13 @@ def predict(g, params, classifier):
         pred = cross_val_predict(clf, feature_values, Y, cv=6)
 
         # Results #
-        print "*"*10
-        print "MultiLayer Perceptron Model"
-        print "Accuracy:", accuracy_score(Y, pred)
+        print ("*"*10)
+        print ("MultiLayer Perceptron Model")
+        print ("Accuracy:", accuracy_score(Y, pred))
         precision, recall, fscore, support = precision_recall_fscore_support(Y, pred, average='binary')
-        print "Precision:", precision
-        print "Recall:", recall
-        print "f-score:", fscore
+        print ("Precision:", precision)
+        print ("Recall:", recall)
+        print ("f-score:", fscore)
 
     elif classifier == "SVN":
 
@@ -147,15 +154,15 @@ def predict(g, params, classifier):
         pred = cross_val_predict(clf, feature_values, Y, cv=6)
 
         # Results #
-        print "*"*10
-        print "SVN"
-        print "Accuracy:", accuracy_score(Y, pred)
+        print ("*"*10)
+        print ("SVN")
+        print ("Accuracy:", accuracy_score(Y, pred))
         precision, recall, fscore, support = precision_recall_fscore_support(Y, pred, average='binary')
-        print "Precision:", precision
-        print "Recall:", recall
-        print "f-score:", fscore
+        print ("Precision:", precision)
+        print ("Recall:", recall)
+        print ("f-score:", fscore)
     else:
-        print "Error: Unknown classifier"
+        print ("Error: Unknown classifier")
 
 # g = load_data('../../data/power.csv')
 # main(g)
